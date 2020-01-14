@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { MdAdd } from "react-icons/md";
 import TodoList from "./TodoList";
+import TodoInsert from "./TodoInsert";
 import { useState } from "react";
 
 const Body = styled.body`
@@ -33,6 +33,7 @@ function Main() {
     { id: 1, text: "영어 공부", checked: false },
     { id: 2, text: "React Study", checked: true }
   ]);
+
   return (
     <>
       <Body>
@@ -42,10 +43,8 @@ function Main() {
           </Header>
           <Content>
             <Ma>
-              <button type="submit">
-                <MdAdd /> Add another List
-              </button>
               <div>
+                <TodoInsert></TodoInsert>
                 <TodoList todos={todos}></TodoList>
               </div>
             </Ma>
