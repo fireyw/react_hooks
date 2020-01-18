@@ -1,28 +1,39 @@
 import React from "react";
 import { MdAdd } from "react-icons/md";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 
 const TodoInsert = () => {
   const [mode, setMode] = useState("");
+  const [content, setContent] = useState("");
 
   const onInsertClick = () => {
-    console.log("btn click");
     setMode("insert");
   };
-  const onSubmit = () => {};
+  const contentOnChange = useCallback(
+    e => {
+      setContent(e.target.value);
+    },
+    [content]
+  );
+
+  const onSubmit = useCallback(e => {
+    e.preventDefault();
+  });
   return (
-    <form className="TodoInsert" onSubmit={onSubmit}>
+    // <form className="TodoInsert" onSubmit={onSubmit}>
+    <div>
       <div>
         {mode === "insert" ? (
           <div>Add another List insert</div>
         ) : (
-          <div>Add another List</div>
+          <input value={content} onChange={contentOnChange} />
         )}
       </div>
       <button onClick={onInsertClick} type="submit">
         <MdAdd />
       </button>
-    </form>
+    </div>
+    // </form>
   );
 };
 
