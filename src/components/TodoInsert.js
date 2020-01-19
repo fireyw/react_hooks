@@ -16,7 +16,7 @@ const TodoInsert = ({ onInsert }) => {
 
   const onSubmit = useCallback(
     e => {
-      onInsert(content);
+      content != "" && onInsert(content);
       setContent("");
       e.preventDefault();
     },
