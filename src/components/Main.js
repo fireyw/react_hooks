@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useCallback } from "react";
 import styled, { css } from "styled-components";
 import TodoList from "./TodoList";
 import TodoInsert from "./TodoInsert";
@@ -33,7 +33,16 @@ function Main() {
     { id: 1, text: "영어 공부", checked: false },
     { id: 2, text: "React Study", checked: true }
   ]);
-
+  const nextId = useRef(3);
+  const onInsert = useCallback(text => {
+    const todo = {
+      id: nextId.current,
+      text,
+      checked: false
+    };
+    setTodos(todos.concat(todo));
+    nextId.current += 1;
+  });
   return (
     <>
       <Body>
@@ -44,7 +53,7 @@ function Main() {
           <Content>
             <Ma>
               <div>
-                <TodoInsert></TodoInsert>
+                <TodoInsert onInsert={onInsert}></TodoInsert>
                 <TodoList todos={todos}></TodoList>
               </div>
             </Ma>
