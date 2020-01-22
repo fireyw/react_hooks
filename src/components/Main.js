@@ -40,6 +40,7 @@ function Main() {
       text,
       checked: false
     };
+
     setTodos(todos.concat(todo));
     nextId.current += 1;
   });

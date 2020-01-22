@@ -1,5 +1,5 @@
 import React from "react";
-import { MdAdd } from "react-icons/md";
+import { MdAdd, MdRemoveCircleOutline } from "react-icons/md";
 import { useState, useCallback } from "react";
 
 const TodoInsert = ({ onInsert }) => {
@@ -14,16 +14,20 @@ const TodoInsert = ({ onInsert }) => {
     [content]
   );
 
-  const onSubmit = useCallback(
+  const addClick = useCallback(
     e => {
-      content != "" && onInsert(content);
+      console.log("add button click");
+      content !== "" && onInsert(content);
       setContent("");
       e.preventDefault();
     },
     [onInsert, content]
   );
+  const removeClick = () => {
+    console.log("removeClick");
+  };
   return (
-    <form className="TodoInsert" onSubmit={onSubmit}>
+    <>
       <div>
         {mode === "insert" ? (
           <div>Add another List insert</div>
@@ -33,10 +37,13 @@ const TodoInsert = ({ onInsert }) => {
           </div>
         )}
       </div>
-      <button type="submit">
+      <button type="submit" onClick={addClick}>
         <MdAdd />
       </button>
-    </form>
+      <button type="submit" onClick={removeClick}>
+        <MdRemoveCircleOutline />
+      </button>
+    </>
   );
 };
 
