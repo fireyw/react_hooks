@@ -2,7 +2,7 @@ import React from "react";
 import { MdAdd, MdRemoveCircleOutline } from "react-icons/md";
 import { useState, useCallback } from "react";
 
-const TodoInsert = ({ onInsert }) => {
+const TodoInsert = ({ onInsert, onRemove }) => {
   const [mode, setMode] = useState("");
   const [content, setContent] = useState("");
 
@@ -24,7 +24,7 @@ const TodoInsert = ({ onInsert }) => {
     [onInsert, content]
   );
   const removeClick = () => {
-    console.log("removeClick");
+    onRemove(2);
   };
   return (
     <>
