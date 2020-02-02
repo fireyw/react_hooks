@@ -44,9 +44,13 @@ function Main() {
     setTodos(todos.concat(todo));
     nextId.current += 1;
   });
-  const onRemove = useCallback(id => {
-    console.log("remove id", id);
-  });
+  const onRemove = useCallback(
+    id => {
+      console.log("remove id", id);
+      setTodos(todos.filter(todo => todo.id !== id));
+    },
+    [todos]
+  );
 
   return (
     <>
@@ -62,7 +66,7 @@ function Main() {
                   onInsert={onInsert}
                   onRemove={onRemove}
                 ></TodoInsert>
-                <TodoList todos={todos}></TodoList>
+                <TodoList todos={todos} onRemove={onRemove}></TodoList>
               </div>
             </Ma>
           </Content>

@@ -40,15 +40,16 @@ const CheckBox = styled.div`
 //   margin: auto;
 // `;
 
-const TodoListItem = ({ todo }) => {
-  const { text, checked } = todo;
+const TodoListItem = ({ todo, onRemove }) => {
+  const { id, text, checked } = todo;
   return (
     <Container>
       <CheckBox className={cn("checkbox", { checked })}>
         {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
         <div className="text">{text}</div>
       </CheckBox>
-      <div>
+
+      <div onClick={() => onRemove(id)}>
         <MdRemoveCircleOutline />
       </div>
     </Container>
