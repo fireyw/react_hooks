@@ -54,24 +54,19 @@ function Main() {
 
   return (
     <>
-      <Body>
-        <Container>
-          <Header>
-            <h1>trello-clone</h1>
-          </Header>
-          <Content>
-            <Ma>
-              <div>
-                <TodoInsert
-                  onInsert={onInsert}
-                  onRemove={onRemove}
-                ></TodoInsert>
-                <TodoList todos={todos} onRemove={onRemove}></TodoList>
-              </div>
-            </Ma>
-          </Content>
-        </Container>
-      </Body>
+      <Container>
+        <Header>
+          <h1>trello-clone</h1>
+        </Header>
+        <Content>
+          <Ma>
+            <div>
+              <TodoInsert onInsert={onInsert} onRemove={onRemove}></TodoInsert>
+              <TodoList todos={todos} onRemove={onRemove}></TodoList>
+            </div>
+          </Ma>
+        </Content>
+      </Container>
     </>
   );
 }

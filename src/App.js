@@ -5,16 +5,21 @@ import React, { useState, useCallback } from "react";
 // import UseReducer from './components/UseReducer';
 // import UseReducer2 from './components/UseReducer2';
 // import UseCallback2 from "./components/UseCallback2";
-import Example from "./components/Example";
+// import Example from "./components/Example";
 import Main from "./components/Main";
+import MyComponents from "./components/MyComponents";
+import Counter from "./components/Counter";
+import Say from "./components/Say";
 
 function App() {
   return (
     <>
-      <div>
-        <Main></Main>
-        {/* <Example></Example> */}
-        {/* <h4>useState</h4>
+      <Main></Main>
+      <MyComponents name={3}>자식</MyComponents>
+      <Counter></Counter>
+      <Say></Say>
+      {/* <Example></Example> */}
+      {/* <h4>useState</h4>
             <UseState/>
             <h4>useEffect</h4>
             <UseEffect/>
@@ -23,7 +28,6 @@ function App() {
             <h4>UseReducer2</h4>
             <UseReducer2/> 
             <UseCallback2></UseCallback2>*/}
-      </div>
     </>
   );
 }
