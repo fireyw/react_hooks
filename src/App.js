@@ -14,7 +14,7 @@ import Say from "./components/Say";
 function App() {
   return (
     <>
-      <Main></Main>
+      {/* <Main></Main> */}
       <MyComponents name={3}>자식</MyComponents>
       <Counter></Counter>
       <Say></Say>
