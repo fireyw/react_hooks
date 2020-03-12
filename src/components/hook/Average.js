@@ -11,12 +11,9 @@ const Average = () => {
     return sum / number.length;
   };
 
-  const onChange = useCallback(
-    e => {
-      setNumber(e.target.value);
-    },
-    [number]
-  );
+  const onChange = useCallback(e => {
+    setNumber(e.target.value);
+  }, []);
   const onInsert = useCallback(
     e => {
       const newList = list.concat(number);
