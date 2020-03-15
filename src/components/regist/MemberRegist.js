@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from "react";
+import Popup from "reactjs-popup";
 
 const MemberRegist = () => {
   const [email, setEmail] = useState();
@@ -80,7 +81,19 @@ const MemberRegist = () => {
             placeholder="생일"
           ></input>
         </div>
-        <button onClick={regist}>회원 가입</button>
+        <button
+          onClick={() => {
+            if (window.confirm("회원가입하시겠습니까?")) regist();
+          }}
+        >
+          회원 가입
+        </button>
+
+        {/* <div>
+          <Popup trigger={<button> Trigger</button>} position="right center">
+            <div>Popup content here !!</div>
+          </Popup>
+        </div> */}
       </section>
     </>
   );

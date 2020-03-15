@@ -1,26 +1,17 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState, useCallback } from "react";
-// import Main from "./components/Main";
-import MyComponents from "./components/MyComponents";
-import Counter from "./components/Counter";
-import Say from "./components/Say";
-import IterationSample from "./components/hook/IterationSample";
-import Average from "./components/hook/Average";
+import { HashRouter, Route } from "react-router-dom";
+import Navigation from "./components/regist/Navigation";
 import MemberRegist from "./components/regist/MemberRegist";
-
+import Login from "./components/regist/Login";
 function App() {
   return (
-    <>
-      <MemberRegist></MemberRegist>
-      {/* <Counter></Counter>
-      <Say></Say>
-      <IterationSample></IterationSample>
-      <Average></Average> */}
-      {/* <Average></Average> */}
-      {/* <UseEffect /> */}
-      {/* <UseReducer2 /> */}
-      {/* <Example></Example> */}
-    </>
+    <HashRouter>
+      <Navigation />
+      <Route path="/" exact={true} component={MemberRegist} />
+      <Route path="/login" component={Login} />
+      {/* <Route path="/movie/:id" component={Detail} />  */}
+    </HashRouter>
   );
 }
 
