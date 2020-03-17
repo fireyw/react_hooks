@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 
 const Login = ({ checkLogin }) => {
+  const [isLogin, setIsLogin] = useState("로그인");
   const [form, setForm] = useState({
     email: "",
     pwd: ""
@@ -18,11 +19,17 @@ const Login = ({ checkLogin }) => {
   };
 
   const onLogin = () => {
-    console.log(checkLogin(form));
+    const loginUser = checkLogin(form)[0];
+    setIsLogin(
+      loginUser.email == undefined || loginUser.email == ""
+        ? "로그인"
+        : loginUser.name
+    );
+    console.log("onLogin : %o", loginUser + " , isLogin : " + isLogin || "님");
   };
   return (
     <section style={{ margin: "30px" }}>
-      <h3>로그인</h3>
+      <h3>{isLogin}</h3>
       <div>
         <input
           type="text"

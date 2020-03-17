@@ -4,13 +4,14 @@ import { HashRouter, Route } from "react-router-dom";
 import Navigation from "./components/regist/Navigation";
 import MemberRegist from "./components/regist/MemberRegist";
 import Login from "./components/regist/Login";
+
 function App() {
   const [memberList, setMemberList] = useState([
     {
-      email: "",
-      pwd: "",
-      name: "",
-      birth: ""
+      email: "1",
+      pwd: "2",
+      name: "3",
+      birth: "4"
     }
   ]);
   //회원가입
@@ -32,23 +33,25 @@ function App() {
       return member.email === loginData.email && member.pwd === loginData.pwd;
     });
     console.log("loginUser: %o ", loginUser);
-    return loginUser.length >= 1 ? loginUser[0].email + "로그인 성공" : "실패";
+    return loginUser;
   };
 
   return (
-    <HashRouter>
-      <Navigation />
-      <Route
-        path="/"
-        exact={true}
-        render={props => <MemberRegist {...props} regist={regist} />}
-      />
-      <Route
-        path="/login"
-        render={props => <Login {...props} checkLogin={checkLogin} />}
-      />
-      {/* <Route path="/movie/:id" component={Detail} />  */}
-    </HashRouter>
+    <>
+      <HashRouter>
+        <Navigation />
+        <Route
+          path="/"
+          exact={true}
+          render={props => <MemberRegist {...props} regist={regist} />}
+        />
+        <Route
+          path="/login"
+          render={props => <Login {...props} checkLogin={checkLogin} />}
+        />
+        {/* <Route path="/movie/:id" component={Detail} />  */}
+      </HashRouter>
+    </>
   );
 }
 

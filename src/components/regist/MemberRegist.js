@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from "react";
 import Popup from "reactjs-popup";
 
-const MemberRegist = ({ regist }) => {
+const MemberRegist = ({ history, regist }) => {
   const [memberList, setMemberList] = useState();
 
   const [form, setForm] = useState({});
@@ -15,16 +15,18 @@ const MemberRegist = ({ regist }) => {
   };
 
   const addClick = e => {
-    console.log("form : %o", form);
     if (
       form.email !== undefined &&
       form.pwd !== undefined &&
       form.email !== "" &&
       form.pwd !== ""
     ) {
-      if (window.confirm("회원가입하시겠습니까?")) {
-        regist(form);
-      }
+      regist(form);
+      // console.log("history : %o", history);
+      history.push("/login");
+      // if (window.confirm("회원가입하시겠습니까?")) {
+      //   regist(form);
+      // }
     } else {
       alert("id 와 pwd는 필수 값 입니다");
     }
