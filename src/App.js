@@ -4,6 +4,8 @@ import { HashRouter, Route } from "react-router-dom";
 import Navigation from "./components/regist/Navigation";
 import MemberRegist from "./components/regist/MemberRegist";
 import Login from "./components/regist/Login";
+import Write from "./components/regist/Write";
+import List from "./components/regist/List";
 
 function App() {
   const [memberList, setMemberList] = useState([
@@ -25,14 +27,13 @@ function App() {
     const newMemberList = memberList.concat(addMember);
 
     setMemberList(newMemberList);
+    return true;
   };
   //로그인체크
   const checkLogin = loginData => {
-    console.log("loginTry: %o ", loginData);
     const loginUser = memberList.filter(member => {
       return member.email === loginData.email && member.pwd === loginData.pwd;
     });
-    console.log("loginUser: %o ", loginUser);
     return loginUser;
   };
 
@@ -49,6 +50,8 @@ function App() {
           path="/login"
           render={props => <Login {...props} checkLogin={checkLogin} />}
         />
+        <Route path="/write" render={props => <Write />} />
+        <Route path="/list" render={props => <List />} />
         {/* <Route path="/movie/:id" component={Detail} />  */}
       </HashRouter>
     </>

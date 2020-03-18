@@ -21,12 +21,13 @@ const MemberRegist = ({ history, regist }) => {
       form.email !== "" &&
       form.pwd !== ""
     ) {
-      regist(form);
-      // console.log("history : %o", history);
-      history.push("/login");
-      // if (window.confirm("회원가입하시겠습니까?")) {
-      //   regist(form);
-      // }
+      if (regist(form)) {
+        alert("회원가입이 완료되었습니다");
+        history.push("/login");
+        // if (window.confirm("회원가입하시겠습니까?")) {
+        //   regist(form);
+        // }
+      }
     } else {
       alert("id 와 pwd는 필수 값 입니다");
     }

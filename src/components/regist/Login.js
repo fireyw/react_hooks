@@ -23,9 +23,8 @@ const Login = ({ checkLogin }) => {
     setIsLogin(
       loginUser.email == undefined || loginUser.email == ""
         ? "로그인"
-        : loginUser.name
+        : loginUser.name + "님"
     );
-    console.log("onLogin : %o", loginUser + " , isLogin : " + isLogin || "님");
   };
   return (
     <section style={{ margin: "30px" }}>
