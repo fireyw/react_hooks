@@ -16,6 +16,27 @@ function App() {
       birth: "4"
     }
   ]);
+  const [writeList, setWriteList] = useState([
+    {
+      no: 1,
+      title: "제목",
+      content: "내용",
+      date: new Date()
+    }
+  ]);
+  //글 등록
+  const addWrite = addList => {
+    const addWriting = {
+      no: addList.no,
+      title: addList.title,
+      content: addList.content,
+      date: addList.date
+    };
+    const newWriteList = writeList.concat(addWriting);
+    setWriteList(newWriteList);
+    console.log("글 등록 완료");
+    return true;
+  };
   //회원가입
   const regist = addList => {
     const addMember = {
@@ -50,8 +71,16 @@ function App() {
           path="/login"
           render={props => <Login {...props} checkLogin={checkLogin} />}
         />
-        <Route path="/write" render={props => <Write />} />
-        <Route path="/list" render={props => <List />} />
+        <Route
+          path="/write"
+          render={props => (
+            <Write {...props} addWrite={addWrite} writeList={writeList} />
+          )}
+        />
+        <Route
+          path="/list"
+          render={props => <List {...props} writeList={writeList} />}
+        />
         {/* <Route path="/movie/:id" component={Detail} />  */}
       </HashRouter>
     </>
