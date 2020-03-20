@@ -6,6 +6,7 @@ import MemberRegist from "./components/regist/MemberRegist";
 import Login from "./components/regist/Login";
 import Write from "./components/regist/Write";
 import List from "./components/regist/List";
+import Modify from "./components/regist/Modify";
 
 function App() {
   const [memberList, setMemberList] = useState([
@@ -36,6 +37,10 @@ function App() {
     setWriteList(newWriteList);
     console.log("글 등록 완료");
     return true;
+  };
+  //글 수정
+  const modifyWrite = () => {
+    console.log("modify call");
   };
   //회원가입
   const regist = addList => {
@@ -81,6 +86,7 @@ function App() {
           path="/list"
           render={props => <List {...props} writeList={writeList} />}
         />
+        <Route path="/modify/:no" component={Modify} />
         {/* <Route path="/movie/:id" component={Detail} />  */}
       </HashRouter>
     </>
