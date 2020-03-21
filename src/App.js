@@ -86,7 +86,10 @@ function App() {
           path="/list"
           render={props => <List {...props} writeList={writeList} />}
         />
-        <Route path="/modify/:no" component={Modify} />
+        <Route
+          path="/modify/:no"
+          render={props => <Modify {...props} writeList={writeList} />}
+        />
         {/* <Route path="/movie/:id" component={Detail} />  */}
       </HashRouter>
     </>
