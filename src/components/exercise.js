@@ -23,6 +23,16 @@ const decrease = () => ({
     type: DECREASE
 })
 
+const change_text = text => ({
+    type: CHANGE_TEXT,
+    text
+})
+
+const add_to_list = item => ({
+    type: ADD_TO_LIST,
+    item
+})
+
 function reducer(state=initialState, action){
     switch(action.type){
         case INCREASE:
@@ -35,6 +45,17 @@ function reducer(state=initialState, action){
                 ...state,
                 counter: state.counter -1
             }
+        case CHANGE_TEXT:
+            return {
+                ...state,
+                text: action.text
+            }
+        case ADD_TO_LIST:
+            return {
+                ...state,
+                list: state.list.concat(action.item)
+            }
+
     }
 }
 
@@ -44,10 +65,12 @@ console.log(store.getState());
 
 const listener = () => {
     const state = store.getState()
-    console.log(state);
+    console.log('listener: ', state);
 }
 
 const unsubscribe= store.subscribe(listener);
-
 store.dispatch(increase());
 store.dispatch(decrease());
+store.dispatch(change_text('fireyw'));
+store.dispatch(add_to_list('a'));
+store.dispatch(add_to_list('b'));
