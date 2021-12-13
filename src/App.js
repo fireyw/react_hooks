@@ -7,6 +7,7 @@ import Login from "./components/regist/Login";
 import Write from "./components/regist/Write";
 import List from "./components/regist/List";
 import Modify from "./components/regist/Modify";
+import CounterContainer from "./containers/CounterContainer";
 
 function App() {
   const [memberList, setMemberList] = useState([
@@ -65,6 +66,7 @@ function App() {
 
   return (
     <>
+      <CounterContainer/>
       <HashRouter>
         <Navigation />
         <Route
